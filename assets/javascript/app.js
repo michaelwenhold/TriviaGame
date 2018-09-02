@@ -96,3 +96,32 @@ let question11 = {
     correctImage: "assets/images/image11.jpg"
 };
 
+let questionsArray = [question0, question1, question2, question3, question4, question5, question6, question7, question8, question9, question10, question11];
+
+let index = 0;
+
+let gameScores = {
+    answeredCorrect: 0,
+    answeredWrong: 0,
+};
+
+function reset() {
+    index = 0;
+    gameScores.answeredCorrect = 0;
+    gameScores.answeredWrong = 0;
+    $("#score").html(" ");
+    $("#reset").hide();
+}
+
+//Display Question
+function displayQuestion(){
+    $("#question").html(questionsArray[index].question);
+    $("#button0").text(questionsArray[index].choices[0]);
+    $("#button1").text(questionsArray[index].choices[1]);
+    $("#button2").text(questionsArray[index].choices[2]);
+    $("#button3").text(questionsArray[index].choices[3]);
+}
+
+
+
+
