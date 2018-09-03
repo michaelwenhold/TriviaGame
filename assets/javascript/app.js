@@ -122,6 +122,18 @@ function displayQuestion(){
     $("#button3").text(questionsArray[index].choices[3]);
 }
 
+//Start Game
+$(document).ready(function(){
 
+//When start button pressed
+    $("#timerDisplay").hide();
+    $(".btn").hide();
+    $("#reset").hide();
+    $("#startme").on("click", function(){
+        displayQuestion();
+        $(".btn").show();
+        $("#startme").hide();
+    })
+})
 
 

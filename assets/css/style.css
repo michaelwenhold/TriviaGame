@@ -8,6 +8,13 @@ body {
 }
 
 .btn-lg {
-    margin-left: 250px;
-    margin-bottom: 20px;
+    margin-left: 350px;
+    margin-bottom: 30px;
+}
+
+#question {
+    color: white;
+    margin-bottom: 50px;
+    font-size: 30px;
+    margin-left: 100px;
 }
