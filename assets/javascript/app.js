@@ -11,7 +11,7 @@ let question0 = {
 let question1 = {
     question: "What restaurant's slogan should be: It's 2am and you're drunk",
     answer: "Waffle House",
-    choices: ["Hopdoddy", "Home Slice", "Waffle House", "Chick-fil-a"],
+    choices: ["Hopdoddy", "Home Slice", "IHOP", "Chick-fil-a"],
     correctAnswer: "2",
     correctImage: "assets/images/image1.jpg"
 };
@@ -19,7 +19,7 @@ let question1 = {
 let question2 = {
     question: "What product's slogan should be: Every bite is a different temperature",
     answer: "Hot Pockets",
-    choices: ["Hot Pockets", "Wheat Thins", "Go-Gurt", "Gusters"],
+    choices: ["Hot Pockets", "Wheat Thins", "Go-Gurt", "Gushers"],
     correctAnswer: "0",
     correctImage: "assets/images/image2.jpg"
 };
@@ -41,17 +41,17 @@ let question4 = {
 };
 
 let question5 = {
-    question: "What product's slogan should be: How many days straight can I eat this before dying",
-    answer: "Ramen Noodles",
-    choices: ["Ramen Noodles", "Spaghetti O's", "Kraft Mac & Cheese", "Slim Jims"],
+    question: "What product's slogan should be: You probably have a dried out bottle somewhere",
+    answer: "White-Out",
+    choices: ["White-Out", "Post-It", "Sharpie", "Ink Cartridge"],
     correctAnswer: "0",
     correctImage: "assets/images/image5.jpg"
 };
 
 let question6 = {
-    question: "What company's slogan should be: We have a salad bar for some reason",
-    answer: "Pizza Hit",
-    choices: ["Jason's Deli", "Subway", "Taco Bell", "Pizza Hut"],
+    question: "What company's slogan should be: It's time to eat your feelings",
+    answer: "Cinnabon",
+    choices: ["Snap Kitchen", "Subway", "MAD Greens", "Cinnabon"],
     correctAnswer: "3",
     correctImage: "assets/images/image6.jpg"
 };
@@ -59,7 +59,7 @@ let question6 = {
 let question7 = {
     question: "What product's slogan should be: Be careful not to poke a hole through the back",
     answer: "Capri Sun",
-    choices: ["Trojan", "Nike", "Capri Sun", "Life Saver"],
+    choices: ["Minute Maid", "Sunny Delight", "Capri Sun", "Kool-Aid"],
     correctAnswer: "2",
     correctImage: "assets/images/image7.jpg"
 };
@@ -75,7 +75,7 @@ let question8 = {
 let question9 = {
     question: "What product's slogan should be: They are all the same flavor",
     answer: "Fruit Loops",
-    choices: ["Skittles", "Jelly Belly", "Fruit Loops", "Sour Patch Kids"],
+    choices: ["Skittles", "Jelly Belly", "M & M's", "Sour Patch Kids"],
     correctAnswer: "2",
     correctImage: "assets/images/image9.jpg"
 };
