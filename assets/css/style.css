@@ -1,5 +1,6 @@
 body {
     background-image: url("https://i.ytimg.com/vi/3hGK4MJrKys/maxresdefault.jpg");
+    font-family: Arial, Helvetica, sans-serif;
     }
 
 .btn-sm {
@@ -19,7 +20,7 @@ body {
     margin-left: 100px;
 }
 
-#quizMessage {
+#message {
     color: white;
     font-size: 50px;
     margin-left: 400px;
@@ -29,6 +30,10 @@ body {
 #score {
     color: white;
     font-size: 50px;
-    margin-left: 400px;
-    margin-top: 100px;
+    margin-left: 500px;
+    margin-top: 50px;
+}
+
+#reset {
+    margin-top: 40px;
 }

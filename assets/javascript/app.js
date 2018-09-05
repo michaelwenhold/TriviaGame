@@ -10,7 +10,7 @@ let question0 = {
 
 let question1 = {
     question: "What restaurant's slogan should be: It's 2am and you're drunk",
-    answer: "Waffle House",
+    answer: "IHOP",
     choices: ["Hopdoddy", "Home Slice", "IHOP", "Chick-fil-a"],
     correctAnswer: "2",
     correctImage: "assets/images/image1.jpg"
@@ -74,7 +74,7 @@ let question8 = {
 
 let question9 = {
     question: "What product's slogan should be: They are all the same flavor",
-    answer: "Fruit Loops",
+    answer: "M & M's",
     choices: ["Skittles", "Jelly Belly", "M & M's", "Sour Patch Kids"],
     correctAnswer: "2",
     correctImage: "assets/images/image9.jpg"
@@ -82,7 +82,7 @@ let question9 = {
 
 let question10 = {
     question: "What company's slogan should be: We'll leave the light on for you because you're in a sketchy neighborhood",
-    Answer: "Motel 6",
+    answer: "Motel 6",
     choices: ["Hilton", "Motel 6", "Holiday Inn", "Airbnb"],
     correctAnswer: "1",
     correctImage: "assets/images/image10.jpg"
@@ -114,7 +114,7 @@ function reset() {
 }
 
 //Display Question
-function displayQuestion(){
+function displayQuestion() {
     $("#question").html(questionsArray[index].question);
     $("#button0").text(questionsArray[index].choices[0]);
     $("#button1").text(questionsArray[index].choices[1]);
@@ -123,55 +123,63 @@ function displayQuestion(){
 }
 
 //Start Game
-$(document).ready(function(){
+$(document).ready(function () {
 
-//When start button pressed
-    $("#timerDisplay").hide();
+    //When start button pressed
+    $("#timer").hide();
     $(".btn").hide();
     $("#reset").hide();
-    $("#startme").on("click", function(){
+    $("#start").on("click", function () {
         displayQuestion();
         $(".btn").show();
-        $("#startme").hide();
+        $("#start").hide();
     })
 })
 
 //When question is answered
-$(".btn").click(function(){
+$(".btn").click(function () {
     if (index < questionsArray.length) {
         let buttonValue = ($(this).attr("data-value"));
         console.log(buttonValue);
         if (buttonValue === questionsArray[index].correctAnswer) {
-            $("#quizMessage").html("Correct! <img src='" + questionsArray[index].correctImage + "' height = 200 width = 350 alt='correct'>");
-            gameScores.answeredCorrect ++;
+            $("#message").html("Correct! Way to Go!<br><br><img src='" + questionsArray[index].correctImage + "' height = 200 width = 300 alt='correct'>");
+            gameScores.answeredCorrect++;
         }
         else {
-            $("#quizMessage").html("Wrong! The correct answer was: <br><br> <img src='" + questionsArray[index].correctImage + "' height = 200 width = 350 alt='correct'><br>" + questionsArray[index].answer);
-            gameScores.answeredWrong ++;
+            $("#message").html("Wrong! The correct answer was: <br><br> <img src='" + questionsArray[index].correctImage + "' height = 200 width = 300 alt='correct'><br>" + questionsArray[index].answer);
+            gameScores.answeredWrong++;
         }
-    $("#quizMessage").show();
-    $(".btn").hide();
-    $("#question").hide();
-
-    setTimeout(nextQuestion, 3000);
-}
-
-//Go to next question
-function nextQuestion() {
-    index ++;
-    if (index < questionsArray.length) {
-        displayQuestion();
-        $("#question").show();
-        $("#quizMessage").hide();
-        $(".btn").show();
-    }
-    else {
-        $("#quizMessage").hide();
+        $("#message").show();
+        $(".btn").hide();
         $("#question").hide();
-        $("#score").html("<div>"+ "Game Over! <br> Your Score" +"</div>"+
-		"<div>"+ "Correct Guesses: " + gameScores.answeredCorrect +"</div>" + 
-		"<div>"+ "Wrong Guesses: " + gameScores.answeredWrong +"</div>");
+
+        setTimeout(nextQuestion, 1000);
     }
-}
+
+    //Go to next question
+    function nextQuestion() {
+        index++;
+        if (index < questionsArray.length) {
+            displayQuestion();
+            $("#question").show();
+            $("#message").hide();
+            $(".btn").show();
+        }
+        else {
+            $("#message").hide();
+            $("#question").hide();
+            $("#reset").show();
+            $("#score").html("<div>" + "Game Over! <br> Your Score is:" + "</div><br>" +
+                "<div>" + "Correct Guesses: " + gameScores.answeredCorrect + "</div><br>" +
+                "<div>" + "Wrong Guesses: " + gameScores.answeredWrong + "</div>");
+
+            //Restart the game
+            $("#reset").click(function () {
+                reset();
+                displayQuestion();
+                nextQuestion();
+            })
+        }
+    }
 })
 
