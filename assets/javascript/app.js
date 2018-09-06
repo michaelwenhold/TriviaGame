@@ -129,7 +129,6 @@ let timerInterval;
 function startTimer() {
 
     timerInterval = setInterval(function () {
-        console.log(countDown)
         countDown--
         if (countDown === 0) {
             clearInterval(timerInterval);
