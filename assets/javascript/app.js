@@ -43,7 +43,7 @@ let question4 = {
 let question5 = {
     question: "What product's slogan should be: You probably have a dried out bottle somewhere",
     answer: "White-Out",
-    choices: ["White-Out", "Post-It", "Sharpie", "Ink Cartridge"],
+    choices: ["White-Out", "Post-It", "Sharpie", "Topo Chico"],
     correctAnswer: "0",
     correctImage: "assets/images/image5.jpg"
 };
@@ -122,6 +122,32 @@ function displayQuestion() {
     $("#button3").text(questionsArray[index].choices[3]);
 }
 
+//Countdown Timer
+let countDown = 15;
+let timerInterval;
+
+function startTimer() {
+
+    timerInterval = setInterval(function () {
+        console.log(countDown)
+        countDown--
+        if (countDown === 0) {
+            clearInterval(timerInterval);
+            countDown = 15;
+            $("#message").html("Wrong! The correct answer was: <br><br> <img src='" + questionsArray[index].correctImage + "' height = 200 width = 300 alt='correct'><br>" + questionsArray[index].answer);
+            gameScores.answeredWrong++;
+
+            $("#message").show();
+            $(".btn").hide();
+            $("#question").hide();
+            $("#timer").hide();
+
+            setTimeout(nextQuestion, 3000);
+        }
+        $("#timer").html("Timer: " + countDown);
+    }, 1000);
+}
+
 //Start Game
 $(document).ready(function () {
 
@@ -133,14 +159,20 @@ $(document).ready(function () {
         displayQuestion();
         $(".btn").show();
         $("#start").hide();
+        $("#timer").show();
+        $("#timer").html("Timer: " + countDown);
+        startTimer();
     })
 })
 
 //When question is answered
 $(".btn").click(function () {
+    clearInterval(timerInterval);
+    countDown = 15;
+    $("#timer").html("Timer: " + countDown);
     if (index < questionsArray.length) {
         let buttonValue = ($(this).attr("data-value"));
-        console.log(buttonValue);
+
         if (buttonValue === questionsArray[index].correctAnswer) {
             $("#message").html("Correct! Way to Go!<br><br><img src='" + questionsArray[index].correctImage + "' height = 200 width = 300 alt='correct'>");
             gameScores.answeredCorrect++;
@@ -152,34 +184,37 @@ $(".btn").click(function () {
         $("#message").show();
         $(".btn").hide();
         $("#question").hide();
+        $("#timer").hide();
 
-        setTimeout(nextQuestion, 1000);
+        setTimeout(nextQuestion, 3000);
     }
+});
 
-    //Go to next question
-    function nextQuestion() {
-        index++;
-        if (index < questionsArray.length) {
+function nextQuestion() {
+
+    index++;
+    if (index < questionsArray.length) {
+        displayQuestion();
+        $("#question").show();
+        $("#message").hide();
+        $(".btn").show();
+        $("#timer").show();
+        startTimer();
+    }
+    else {
+        $("#message").hide();
+        $("#question").hide();
+        $("#reset").show();
+        $("#score").html("<div>" + "Game Over! <br> Your Score is:" + "</div><br>" +
+            "<div>" + "Correct Guesses: " + gameScores.answeredCorrect + "</div><br>" +
+            "<div>" + "Wrong Guesses: " + gameScores.answeredWrong + "</div>");
+
+        //Restart the game
+        $("#reset").click(function() {
+            reset();
             displayQuestion();
-            $("#question").show();
-            $("#message").hide();
-            $(".btn").show();
-        }
-        else {
-            $("#message").hide();
-            $("#question").hide();
-            $("#reset").show();
-            $("#score").html("<div>" + "Game Over! <br> Your Score is:" + "</div><br>" +
-                "<div>" + "Correct Guesses: " + gameScores.answeredCorrect + "</div><br>" +
-                "<div>" + "Wrong Guesses: " + gameScores.answeredWrong + "</div>");
-
-            //Restart the game
-            $("#reset").click(function () {
-                reset();
-                displayQuestion();
-                nextQuestion();
-            })
-        }
+            nextQuestion();
+        })
     }
-})
+}
 

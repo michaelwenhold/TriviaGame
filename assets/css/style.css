@@ -3,6 +3,11 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     }
 
+.container {
+    text-align: center;
+}
+
+
 .btn-sm {
     margin-left: 650px;
     font-size: 30px;
@@ -36,4 +41,11 @@ body {
 
 #reset {
     margin-top: 40px;
+}
+
+#timer {
+    margin-left: 700px;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
 }
